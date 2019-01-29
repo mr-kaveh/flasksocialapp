@@ -73,8 +73,9 @@ def logout():
     session.pop('username')
     return redirect(url_for(user_app.login))
 
-@user_app.route('/home', methods=['Get', 'POST'])
-def home():
-    session.pop('username')
-    return redirect(url_for(user_app.login))
+@user_app.route('/<username>', methods=['Get', 'POST'])
+def profile(username):
+    user = User.objects.filter(username=username).first()
+    #return str(user)
+    return render_template('user/profile.html', user=user)
 
