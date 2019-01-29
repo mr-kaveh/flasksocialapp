@@ -1,0 +1,4 @@
+#docker build -t my-mongo .
+#docker run -d -v /home/hossein/myScripts/socialApp/mongo/data:/data/db  my-mongo
+#docker exec -it <Container_ID> /bin/bash
+
