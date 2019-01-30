@@ -76,6 +76,6 @@ def logout():
 @user_app.route('/<username>', methods=['Get', 'POST'])
 def profile(username):
     user = User.objects.filter(username=username).first()
-    #return str(user)
+#     return str(user)
     return render_template('user/profile.html', user=user)
 
