@@ -7,13 +7,11 @@
 
 {% block content %}
 
-{% include "navbar.html" %}
-
 <div class="row">
 
   <div class="col-md-3">
 
-    <img class="img-thumbnail" src="{{ user.profile_imgsrc('xlg') }}" width="200" height="200" alt="{{ user.username }}">
+    <img class="media-object" src="//placehold.it/200x200" width="200" height="200" alt="{{ user.username }}">
 
     <h3 class="profile-fullname">{{ user.first_name }} {{ user.last_name }}</h3>
     <h3 class="profile-username"><a href="{{ url_for('user_app.profile', username=user.username) }}" />@{{ user.username }}</a></h3>
@@ -72,7 +70,7 @@
       <div class="col-md-3"> <!-- Friends side bar -->
 
         <h4><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-          <a href="{{ url_for('.profile-friends', username=user.username) }}">Friends</a>
+          <a href="{{ url_for('user_app.profile', username=user.username) }}">Friends</a>
         <span class="badge">{{ friends_total }}</span></h4>
 
         {% for friend in friends %}
