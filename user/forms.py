@@ -3,6 +3,7 @@ from wtforms import validators, StringField, PasswordField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import ValidationError
 from user.models import User
+import re
 
 
 class RegisterForm(Form):
@@ -33,6 +34,8 @@ class RegisterForm(Form):
     def validate_email(form, field):
         if User.objects.filter(email=field.data).first():
             raise ValidationError("Email Already Exists")
+        if not re.match('^[a-zA-Z0-9_-]{4,25}$', field.data):
+            raise ValidationError('Invalid Username')
 
 
 class LoginForm(Form):
